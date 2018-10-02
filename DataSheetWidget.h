@@ -9,9 +9,12 @@ class DataSheetWidget : public QTableView
 public:
 	DataSheetWidget(QWidget *parent = 0);
 	~DataSheetWidget();
+	void runSort();
 
 private:
 	DataSheetModel *m_pDataSheetModeel;
+
+	
 };
 
 #endif

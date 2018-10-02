@@ -14,6 +14,7 @@ class SortAreaWidget : public QSplitter
 public:
 	SortAreaWidget(QWidget *parent = 0);
 	~SortAreaWidget();
+	void sort();
 private:
 	void setupUi();
 

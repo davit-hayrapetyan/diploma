@@ -12,8 +12,12 @@ public:
 	DiplomaWork(QWidget *parent = 0);
 	~DiplomaWork();
 private:
-	SortAreaWidget *m_pMainWorkspace;
+	SortAreaWidget *m_pSortAreaWorkspace;
 	QToolBar *m_pToolBar;
 	QAction *m_pOpenAct;
 	QAction *m_pRunAct;
+signals:
+	void sigSort();
+public slots:
+	void RunActHandle();
 };

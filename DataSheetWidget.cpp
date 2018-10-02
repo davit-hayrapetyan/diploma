@@ -16,3 +16,11 @@ DataSheetWidget::DataSheetWidget(QWidget *parent)
 DataSheetWidget::~DataSheetWidget()
 {
 }
+
+void DataSheetWidget::runSort()
+{
+	setUpdatesEnabled(false);
+	m_pDataSheetModeel->m_pData->sort();
+	update();
+	setUpdatesEnabled(true);
+}

@@ -6,21 +6,23 @@
 DataSheetModel::DataSheetModel(QObject *parent)
 	: QAbstractTableModel(parent)
 {
+	m_pData = new Data();
 }
 
 
 DataSheetModel::~DataSheetModel()
 {
+	delete m_pData;
 }
 
 int DataSheetModel::rowCount(const QModelIndex &parent) const
 {
-	return 21;
+	return m_pData->m_Data.size();
 }
 
 int DataSheetModel::columnCount(const QModelIndex &parent) const
 {
-	return 11;
+	return m_pData->m_Data.begin()->size();
 }
 
 QVariant DataSheetModel::data(const QModelIndex &index, int role) const
@@ -31,9 +33,7 @@ QVariant DataSheetModel::data(const QModelIndex &index, int role) const
 	switch (role)
 	{
 	case Qt::DisplayRole:
-		return QString("Row%1, Column%2")
-			.arg(index.row() + 1)
-			.arg(index.column() + 1);
+		return QString::number(m_pData->m_Data[m_pData->m_IndexMap[index.row()]].at(index.column()));
 
 	default:
 		return QVariant();
@@ -48,16 +48,16 @@ QVariant DataSheetModel::headerData(int section, Qt::Orientation orientation, in
 	{
 		if (role == Qt::DisplayRole)
 		{
-			if (section == 0)
-				return QString("first");
-
-			if (section == 1)
-				return QString("second");
-
-			if (section == 2)
-				return QString("third");
+			for (auto&&[first, second] : m_pData->m_ColIndex)
+			{
+				if (section == second)
+				{
+					return QString::fromStdString(first);
+				}
+			}
 		}
 	}
 
 	return QAbstractTableModel::headerData(section, orientation, role);
 }
+

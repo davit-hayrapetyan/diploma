@@ -12,6 +12,12 @@ SortAreaWidget::~SortAreaWidget()
 {
 }
 
+void SortAreaWidget::sort()
+{
+	m_pDataSheetWidget->runSort();
+	m_pDataSheetWidget->update();
+}
+
 void SortAreaWidget::setupUi()
 {
 	QListView *listview = new QListView;
