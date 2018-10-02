@@ -5,6 +5,7 @@
 #include <QSplitter>
 
 #include "PrioritySelectorWidget.h"
+#include "SortingPanelWidget.h"
 #include "DataSheetWidget.h"
 
 class SortAreaWidget : public QSplitter
@@ -17,7 +18,7 @@ private:
 	void setupUi();
 
 	DataSheetWidget *m_pDataSheetWidget;
-	PrioritySelectorWidget *m_pPrioritySelectorWidget;
+	SortingPanelWidget *m_pSortingPanelWidget;
 };
 
 #endif

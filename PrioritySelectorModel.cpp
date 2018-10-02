@@ -5,7 +5,7 @@
 PrioritySelectorModel::PrioritySelectorModel(QObject *parent)
 	: QStringListModel(parent)
 {
-	m_lstColnames << "Hello1" << "Hello2" << "Hello3" << "Hello4" << "Hello5";
+	m_lstColnames << "Col1" << "Col2" << "Col3" << "Col4" << "Col5";
 	setStringList(m_lstColnames);
 }
 
@@ -33,8 +33,8 @@ QVariant PrioritySelectorModel::data(const QModelIndex & index, int role) const
 	case Qt::DisplayRole:
 		return m_lstColnames.at(index.row());
 
-	case Qt::CheckStateRole:
-		return m_lstCheckedItems.contains(index) ? Qt::Checked : Qt::Unchecked;
+	/*case Qt::CheckStateRole:
+		return m_lstCheckedItems.contains(index) ? Qt::Checked : Qt::Unchecked;*/
 
 	case Qt::BackgroundColorRole:
 		return m_lstCheckedItems.contains(index) ? QColor("#ffffb2") : QColor("#ffffff");

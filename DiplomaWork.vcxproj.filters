@@ -51,6 +51,9 @@
     <ClCompile Include="DataSheetWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SortingPanelWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DiplomaWork.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="DataSheetModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SortingPanelWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

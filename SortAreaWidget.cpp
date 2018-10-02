@@ -17,14 +17,15 @@ void SortAreaWidget::setupUi()
 	QListView *listview = new QListView;
 
 	m_pDataSheetWidget = new DataSheetWidget();
-	m_pPrioritySelectorWidget = new PrioritySelectorWidget();
-	addWidget(m_pPrioritySelectorWidget);
+	m_pSortingPanelWidget = new SortingPanelWidget();
 	addWidget(m_pDataSheetWidget);
+	addWidget(m_pSortingPanelWidget);
+	
 	//addWidget(gl);
 	
 
 	
-	setStretchFactor(0, 3);
-	setStretchFactor(1, 2);
+	setStretchFactor(0, 4);
+	setStretchFactor(1, 1);
 	//setStretchFactor(2, 3);
 }
