@@ -15,6 +15,7 @@ public:
 	SortAreaWidget(QWidget *parent = 0);
 	~SortAreaWidget();
 	void sort();
+	void reset();
 private:
 	void setupUi();
 

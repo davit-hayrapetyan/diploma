@@ -10,6 +10,7 @@ public:
 	DataSheetWidget(QWidget *parent = 0);
 	~DataSheetWidget();
 	void runSort();
+	void reset();
 
 private:
 	DataSheetModel *m_pDataSheetModeel;

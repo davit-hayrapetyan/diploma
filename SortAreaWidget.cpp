@@ -15,7 +15,11 @@ SortAreaWidget::~SortAreaWidget()
 void SortAreaWidget::sort()
 {
 	m_pDataSheetWidget->runSort();
-	m_pDataSheetWidget->update();
+}
+
+void SortAreaWidget::reset()
+{
+	m_pDataSheetWidget->reset();
 }
 
 void SortAreaWidget::setupUi()

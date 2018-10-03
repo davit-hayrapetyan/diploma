@@ -3,5 +3,6 @@
         <file>Resources/icons/logo.png</file>
         <file>Resources/icons/openFile.png</file>
         <file>Resources/icons/sort.png</file>
+        <file>Resources/icons/reset.png</file>
     </qresource>
 </RCC>

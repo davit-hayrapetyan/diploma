@@ -11,6 +11,7 @@ public:
 	std::map<int, int> m_IndexMap;
 	std::map<std::string, int> m_ColIndex;
 	void sort();
+	void reset();
 	Data();
 	~Data();
 };

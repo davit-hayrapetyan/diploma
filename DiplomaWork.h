@@ -16,8 +16,10 @@ private:
 	QToolBar *m_pToolBar;
 	QAction *m_pOpenAct;
 	QAction *m_pRunAct;
+	QAction *m_pReset;
 signals:
 	void sigSort();
 public slots:
 	void RunActHandle();
+	void ResetHandle();
 };

@@ -24,3 +24,11 @@ void DataSheetWidget::runSort()
 	update();
 	setUpdatesEnabled(true);
 }
+
+void DataSheetWidget::reset()
+{
+	setUpdatesEnabled(false);
+	m_pDataSheetModeel->m_pData->reset();
+	update();
+	setUpdatesEnabled(true);
+}

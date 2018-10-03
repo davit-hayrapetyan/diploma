@@ -12,6 +12,14 @@ void Data::sort()
 	}
 }
 
+void Data::reset()
+{
+	for (int i = 0; i < mySize; i++)
+	{
+		m_IndexMap[i] = i;
+	}
+}
+
 Data::Data()
 {
 	std::srand(unsigned(std::time(0)));

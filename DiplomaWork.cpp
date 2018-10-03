@@ -26,11 +26,21 @@ DiplomaWork::DiplomaWork(QWidget *parent)
 	m_pRunAct = new QAction(iconRun, tr("Run"), this);
 	m_pToolBar->addAction(m_pRunAct);
 
+	const QIcon iconReset = QIcon(":/Resources/icons/reset.png");
+	m_pReset = new QAction(iconReset, tr("Reset"), this);
+	m_pToolBar->addAction(m_pReset);
+
 	connect(m_pRunAct, SIGNAL(triggered()), this, SLOT(RunActHandle()));
+	connect(m_pReset, SIGNAL(triggered()), this, SLOT(ResetHandle()));
 }
 
 DiplomaWork::~DiplomaWork()
 {
+}
+
+void DiplomaWork::ResetHandle()
+{
+	m_pSortAreaWorkspace->reset();
 }
 
 void DiplomaWork::RunActHandle()
