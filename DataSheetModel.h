@@ -21,6 +21,7 @@ public:
 
 	QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
 
+	QStringList getColNames();
 };
 
 #endif

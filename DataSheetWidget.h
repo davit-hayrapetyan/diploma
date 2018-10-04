@@ -11,6 +11,7 @@ public:
 	~DataSheetWidget();
 	void runSort();
 	void reset();
+	QStringList getNamesList();
 
 private:
 	DataSheetModel *m_pDataSheetModeel;

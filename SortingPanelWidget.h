@@ -5,7 +5,8 @@
 #include <QSplitter>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include "PrioritySelectorWidget.h"
+#include "PrioritySelectorListWidget.h"
+#include "PrioritySelectedListWidget.h"
 
 class SortingPanelWidget : public QWidget
 {
@@ -13,13 +14,14 @@ class SortingPanelWidget : public QWidget
 public:
 	SortingPanelWidget(QWidget *parent=0);
 	~SortingPanelWidget();
-
+	void setNamesList(QStringList list);
+	QStringList l = { "sadqsd", "asdasd", "asdasdas" };
 private:
 	void setupUi();
 	QHBoxLayout *m_pListsLayout;
 	QVBoxLayout *m_pPanelLayout;
-	PrioritySelectorWidget *m_pPrioritySelectorWidget1;
-	PrioritySelectorWidget *m_pPrioritySelectorWidget2;
+	PrioritySelectorListWidget *m_pPrioritySelectorWidget;
+	PrioritySelectedListWidget *m_pPrioritySelectedWidget;
 };
 
 #endif

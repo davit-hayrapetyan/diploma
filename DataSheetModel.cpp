@@ -61,3 +61,13 @@ QVariant DataSheetModel::headerData(int section, Qt::Orientation orientation, in
 	return QAbstractTableModel::headerData(section, orientation, role);
 }
 
+QStringList DataSheetModel::getColNames()
+{
+	QStringList Names;
+	for (auto&&[first, second] : m_pData->m_ColIndex)
+	{
+		Names.append(QString::fromStdString(first));
+	}
+	return Names;
+}
+

@@ -28,6 +28,7 @@ void SortAreaWidget::setupUi()
 
 	m_pDataSheetWidget = new DataSheetWidget();
 	m_pSortingPanelWidget = new SortingPanelWidget();
+	m_pSortingPanelWidget->setNamesList(m_pDataSheetWidget->getNamesList());
 	addWidget(m_pDataSheetWidget);
 	addWidget(m_pSortingPanelWidget);
 	

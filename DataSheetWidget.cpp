@@ -32,3 +32,8 @@ void DataSheetWidget::reset()
 	update();
 	setUpdatesEnabled(true);
 }
+
+QStringList DataSheetWidget::getNamesList()
+{
+	return m_pDataSheetModeel->getColNames();
+}

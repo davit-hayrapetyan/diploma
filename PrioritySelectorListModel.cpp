@@ -1,29 +1,37 @@
-#include "PrioritySelectorModel.h"
+#include "PrioritySelectorListModel.h"
 #include <QColor>
 #include <QSize>
 
-PrioritySelectorModel::PrioritySelectorModel(QObject *parent)
+PrioritySelectorListModel::PrioritySelectorListModel(QObject *parent)
 	: QStringListModel(parent)
 {
-	m_lstColnames << "Col1" << "Col2" << "Col3" << "Col4" << "Col5";
-	setStringList(m_lstColnames);
+	//m_lstColnames << "Col1" << "Col2" << "Col3" << "Col4" << "Col5";
+	//setStringList(m_lstColnames);
 }
 
-PrioritySelectorModel::~PrioritySelectorModel()
+PrioritySelectorListModel::~PrioritySelectorListModel()
 {
 }
 
-void PrioritySelectorModel::addCols(QStringList lstColNames)
+Qt::DropActions PrioritySelectorListModel::supportedDropActions() const
+{
+	return Qt::CopyAction | Qt::MoveAction;
+}
+
+
+void PrioritySelectorListModel::addCols(QStringList lstColNames)
 {
 	m_lstColnames = lstColNames;
 }
 
-int PrioritySelectorModel::rowCount(const QModelIndex & parent) const
+
+
+int PrioritySelectorListModel::rowCount(const QModelIndex & parent) const
 {
 	return m_lstColnames.count();
 }
 
-QVariant PrioritySelectorModel::data(const QModelIndex & index, int role) const
+QVariant PrioritySelectorListModel::data(const QModelIndex & index, int role) const
 {
 	if (!index.isValid())
 		return QVariant();
@@ -46,17 +54,17 @@ QVariant PrioritySelectorModel::data(const QModelIndex & index, int role) const
 	return QStringListModel::data(index, role);
 }
 
-Qt::ItemFlags PrioritySelectorModel::flags(const QModelIndex &index) const
+Qt::ItemFlags PrioritySelectorListModel::flags(const QModelIndex &index) const
 {
 	Qt::ItemFlags defaultFlags = QStringListModel::flags(index);
 
 	if (index.isValid())
-		return defaultFlags | Qt::ItemIsUserCheckable;
-
-	return defaultFlags;
+		return Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | defaultFlags;
+	else
+		return Qt::ItemIsDropEnabled | defaultFlags;
 }
 
-bool PrioritySelectorModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool PrioritySelectorListModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
 	if (!index.isValid() || role != Qt::CheckStateRole)
 		return false;

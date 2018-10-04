@@ -36,12 +36,6 @@
     <ClCompile Include="DiplomaWork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PrioritySelectorWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PrioritySelectorModel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SortAreaWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,15 +54,21 @@
     <ClCompile Include="Row.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PrioritySelectedListModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrioritySelectedListWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrioritySelectorListModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PrioritySelectorListWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DiplomaWork.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="PrioritySelectorModel.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="PrioritySelectorWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SortAreaWidget.h">
@@ -81,6 +81,18 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SortingPanelWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PrioritySelectorListModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PrioritySelectorListWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PrioritySelectedListModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PrioritySelectedListWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
