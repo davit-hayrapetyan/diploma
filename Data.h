@@ -3,6 +3,7 @@
 #include <map>
 #include <QModelIndex>
 #include "Row.h"
+#include "ParallelMergeSort.h"
 class Data
 {
 public:

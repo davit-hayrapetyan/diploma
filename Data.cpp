@@ -5,7 +5,8 @@
 
 void Data::sort()
 {
-	std::sort(m_PriorityData.begin(), m_PriorityData.end());
+	//std::sort(m_PriorityData.begin(), m_PriorityData.end());
+	ParallelMergeSort::mergeSortParallel(m_PriorityData.begin(), m_PriorityData.end());
 	for (int i = 0; i < mySize; i++)
 	{
 		m_indexMap[i] = *(m_PriorityData[i].Cells.back());

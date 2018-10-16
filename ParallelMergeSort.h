@@ -11,10 +11,12 @@
 
 class ParallelMergeSort
 {
-public:
-	void merge(DataIter b, DataIter m, DataIter e);
-	void merge_sort(DataIter b, DataIter e);
+private:
+	static void merge(DataIter b, DataIter m, DataIter e);
 	ParallelMergeSort();
-	~ParallelMergeSort();
+public:
+	
+	virtual ~ParallelMergeSort() = 0;
+	static void mergeSortParallel(DataIter b, DataIter e);
 };
 
