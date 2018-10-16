@@ -30,13 +30,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DiplomaWork.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SortAreaWidget.cpp">
+    <QtUic Include="DiplomaWork.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="DiplomaWork.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DiplomaWork.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DataSheetModel.cpp">
@@ -45,13 +52,13 @@
     <ClCompile Include="DataSheetWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SortingPanelWidget.cpp">
+    <ClCompile Include="DiplomaWork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Data.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Row.cpp">
+    <ClCompile Include="ParallelMergeSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PrioritySelectedListModel.cpp">
@@ -66,27 +73,38 @@
     <ClCompile Include="PrioritySelectorListWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Row.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SortAreaWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SortingPanelWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="DiplomaWork.h">
+    <ClInclude Include="Data.h">
       <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="SortAreaWidget.h">
+    </ClInclude>
+    <ClInclude Include="ParallelMergeSort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Row.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="DataSheetModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="DataSheetWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="DataSheetModel.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="SortingPanelWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="PrioritySelectorListModel.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="PrioritySelectorListWidget.h">
+    <QtMoc Include="DiplomaWork.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="PrioritySelectedListModel.h">
@@ -95,29 +113,17 @@
     <QtMoc Include="PrioritySelectedListWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="DiplomaWork.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="DiplomaWork.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="resource.h">
+    <QtMoc Include="PrioritySelectorListModel.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Data.h">
+    </QtMoc>
+    <QtMoc Include="PrioritySelectorListWidget.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Row.h">
+    </QtMoc>
+    <QtMoc Include="SortAreaWidget.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="DiplomaWork.rc" />
+    </QtMoc>
+    <QtMoc Include="SortingPanelWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

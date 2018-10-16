@@ -33,7 +33,7 @@ QVariant DataSheetModel::data(const QModelIndex &index, int role) const
 	switch (role)
 	{
 	case Qt::DisplayRole:
-		return QString::number(m_pData->m_Data[m_pData->m_IndexMap[index.row()]].at(index.column()));
+		return QString::number(m_pData->m_Data[m_pData->m_indexMap[index.row()]].at(index.column()));
 
 	default:
 		return QVariant();
@@ -48,7 +48,7 @@ QVariant DataSheetModel::headerData(int section, Qt::Orientation orientation, in
 	{
 		if (role == Qt::DisplayRole)
 		{
-			for (auto&&[first, second] : m_pData->m_ColIndex)
+			for (auto&&[first, second] : m_pData->m_Colindex)
 			{
 				if (section == second)
 				{
@@ -64,7 +64,7 @@ QVariant DataSheetModel::headerData(int section, Qt::Orientation orientation, in
 QStringList DataSheetModel::getColNames()
 {
 	QStringList Names;
-	for (auto&&[first, second] : m_pData->m_ColIndex)
+	for (auto&&[first, second] : m_pData->m_Colindex)
 	{
 		Names.append(QString::fromStdString(first));
 	}

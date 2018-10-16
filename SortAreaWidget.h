@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QSplitter>
 
-#include "PrioritySelectorWidget.h"
+#include "PrioritySelectorListWidget.h"
 #include "SortingPanelWidget.h"
 #include "DataSheetWidget.h"
 

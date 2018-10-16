@@ -1,5 +1,5 @@
-#ifndef SORTINGPANELWIDGET_H
-#define SORTINGPANELWIDGET_H
+#ifndef SORTinGPANELWIDGET_H
+#define SORTinGPANELWIDGET_H
 
 #include <QWidget>
 #include <QSplitter>

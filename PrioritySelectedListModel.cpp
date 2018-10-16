@@ -19,6 +19,78 @@ Qt::DropActions PrioritySelectedListModel::supportedDropActions() const
 	return Qt::CopyAction | Qt::MoveAction;
 }
 
+Qt::DropActions PrioritySelectedListModel::supportedDragActions() const
+{
+	return Qt::CopyAction | Qt::MoveAction;
+}
+
+QStringList PrioritySelectedListModel::mimeTypes() const
+{
+	QStringList types;
+	types << "text/plain";
+	return types;
+}
+
+QMimeData * PrioritySelectedListModel::mimeData(const QModelIndexList & indexes) const
+{
+	QMimeData *mimeData = new QMimeData();
+	QByteArray encodedData;
+
+	QDataStream stream(&encodedData, QIODevice::WriteOnly);
+
+	foreach(QModelIndex index, indexes) {
+		if (index.isValid()) {
+			m_DragedItemindex = index;
+			QString text = data(index, Qt::DisplayRole).toString();
+			stream << text;
+		}
+	}
+
+	mimeData->setData("text/plain", encodedData);
+	return mimeData;
+}
+
+bool PrioritySelectedListModel::dropMimeData(const QMimeData * data, Qt::DropAction action, int row, int column, const QModelIndex & parent)
+{
+	if (action == Qt::IgnoreAction)
+		return true;
+
+	if (!data->hasFormat("text/plain"))
+		return false;
+
+	if (column > 0)
+		return false;
+
+	int beginRow;
+
+	if (row != -1)
+		beginRow = row;
+	else if (parent.isValid())
+		beginRow = parent.row();
+	else
+		beginRow = rowCount(QModelIndex());
+	QByteArray encodedData = data->data("text/plain");
+	QDataStream stream(&encodedData, QIODevice::ReadOnly);
+	QStringList newItems;
+	int rows = 0;
+
+	while (!stream.atEnd()) {
+		QString text;
+		stream >> text;
+		newItems << text;
+		++rows;
+	}
+
+	insertRows(beginRow, rows, QModelIndex());
+	foreach(QString text, newItems) {
+		QModelIndex idx = index(beginRow, 0, QModelIndex());
+		PrioritySelectedListModel::setData(idx, text, Qt::EditRole);
+		beginRow++;
+	}
+
+	return true;
+}
+
 void PrioritySelectedListModel::addCols(QStringList lstColNames)
 {
 	m_lstColnames = lstColNames;
@@ -74,7 +146,17 @@ bool PrioritySelectedListModel::setData(const QModelIndex &index, const QVariant
 		m_lstCheckedItems.remove(index);
 
 	if (role == Qt::EditRole)
+	{
+		int row = index.row();
+		int dragedRow = m_DragedItemindex.row();
+		if (row < dragedRow)
+			dragedRow++;
+		m_lstColnames.insert(row, value.toString());
+		m_lstColnames.removeAt(dragedRow);
+		emit dataChanged(index, index);
+
 		return false;
+	}
 
 	//emit dataChanged(index, index);
 	return true;
