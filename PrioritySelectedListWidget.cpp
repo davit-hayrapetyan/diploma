@@ -10,7 +10,7 @@ PrioritySelectedListWidget::PrioritySelectedListWidget(QWidget *parent) : QListV
 	setDragEnabled(true);
 	setAcceptDrops(true);
 	setDropIndicatorShown(true);
-	//setDragDropMode(QAbstractItemView::internalMove);
+	setDragDropMode(QAbstractItemView::DragDrop);
 }
 
 

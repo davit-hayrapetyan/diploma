@@ -1,4 +1,6 @@
-#pragma once
+#ifndef DATA_H
+#define DATA_H
+
 #include <vector>
 #include <map>
 #include <QModelIndex>
@@ -18,3 +20,4 @@ public:
 	~Data();
 };
 
+#endif //DATA_H

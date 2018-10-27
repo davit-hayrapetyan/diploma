@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PRIORIYSELECTEDMODEL_H
+#define PRIORIYSELECTEDMODEL_H
 
 #include <QStringListModel>
 #include <QStringList>
@@ -31,3 +32,5 @@ private:
 
 	QSet<QPersistentModelIndex> m_lstCheckedItems;
 };
+
+#endif

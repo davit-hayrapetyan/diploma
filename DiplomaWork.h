@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIPLOMAWORK_H
+#define DIPLOMAWORK_H
 
 #include <QtWidgets/QMainWindow>
 #include "ui_DiplomaWork.h"
@@ -23,3 +24,5 @@ public slots:
 	void RunActHandle();
 	void ResetHandle();
 };
+
+#endif //DIPLOMAWORK_H

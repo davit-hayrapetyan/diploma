@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PARALLELMERGESORT_H
+#define PARALLELMERGESORT_H
 
 #include <ppl.h>
 #include <vector>
@@ -7,16 +8,26 @@
 #include "Row.h"
 #include "Data.h"
 
+#include <QVector>
+#include <QPair>
+#include <QFuture>
+#include <QFutureSynchronizer>
+#include <QThread>
+#include <QtConcurrent/qtconcurrentrun.h>
+
 #define DataIter std::vector<Row>::iterator
 
 class ParallelMergeSort
 {
 private:
-	static void merge(DataIter b, DataIter m, DataIter e);
-	ParallelMergeSort();
+	void merge(DataIter b, DataIter m, DataIter e);
+	int nTC;
 public:
 	
-	virtual ~ParallelMergeSort() = 0;
-	static void mergeSortParallel(DataIter b, DataIter e);
+	ParallelMergeSort();
+	~ParallelMergeSort();
+	void mergeSortParallel(DataIter b, DataIter e);
+	void mySort(DataIter begin, DataIter end);
 };
 
+#endif //PARALLELMERGESORT_H

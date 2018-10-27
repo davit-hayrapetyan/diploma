@@ -5,13 +5,13 @@
 PrioritySelectorListWidget::PrioritySelectorListWidget(QWidget *parent) : QListView(parent)
 {
 	m_pPrioritySelectorListModel = new PrioritySelectorListModel();
-	setModel(m_pPrioritySelectorListModel);
 	setEditTriggers(QAbstractItemView::NoEditTriggers);
 	setSelectionMode(QAbstractItemView::ExtendedSelection);
 	setDragEnabled(true);
 	setAcceptDrops(true);
 	setDropIndicatorShown(true);
-	//setDragDropMode(QAbstractItemView::InternalMove);
+	setDragDropMode(QAbstractItemView::DragDrop);
+	setModel(m_pPrioritySelectorListModel);
 }
 
 
@@ -27,48 +27,94 @@ void PrioritySelectorListWidget::setListItems(QStringList list)
 	setUpdatesEnabled(true);
 	
 }
-/*
-void PrioritySelectorListWidget::mousePressEvent(QMouseEvent *event)
+void PrioritySelectorListWidget::startDrag(Qt::DropActions supportedActions)
 {
-	if (event->button() == Qt::LeftButton)
+	QModelIndexList list = this->selectionModel()->selectedIndexes();
+
+	PrioritySelectorListModel* model = dynamic_cast<PrioritySelectorListModel*>(this->model());
+	QMimeData* data = model->mimeData(list);
+
+	if (!data)
 	{
-			m_DragStartPos = event->pos();
-		QDrag *drag = new QDrag(this);
-		QMimeData *mimeData = new QMimeData;
-
-		mimeData->setText((model()->data(indexAt(m_DragStartPos))).toString());
-		drag->setMimeData(mimeData);
-		Qt::DropAction dropAction = drag->exec();
+		qDebug() << "Error! no data obtained!";
+		return;
 	}
-}
 
-void PrioritySelectorListWidget::mouseMoveEvent(QMouseEvent * event)
+	QDrag* drag = new QDrag(this);
+	drag->setMimeData(data);
+	drag->exec(supportedActions, Qt::IgnoreAction);
+}
+void PrioritySelectorListWidget::dragEnterEvent(QDragEnterEvent * event)
 {
-	if (!(event->buttons() & Qt::LeftButton))
-		return;
-	if ((event->pos() - m_DragStartPos).manhattanLength()
-		< QApplication::startDragDistance())
-		return;
-
-	QDrag *drag = new QDrag(this);
-	QMimeData *mimeData = new QMimeData;
-
-	mimeData->setText((model()->data(indexAt(m_DragStartPos))).toString());
-	drag->setMimeData(mimeData);
-
-	Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction);
+	setState(DraggingState);
+	event->accept();
 }
-
-void PrioritySelectorListWidget::dragEnterEvent(QDragEnterEvent *event)
+void PrioritySelectorListWidget::dropEvent(QDropEvent * e)
 {
-	if (event->mimeData()->hasFormat("text/plain"))
-		event->acceptProposedAction();
-}
+	qDebug() << e->mimeData();
 
-void PrioritySelectorListWidget::dropEvent(QDropEvent *event)
+	QModelIndex index = indexVisuallyAt(e->pos());
+	PrioritySelectorListModel* model = dynamic_cast<PrioritySelectorListModel*>(this->model());
+
+	model->dropMimeData(e->mimeData(), e->dropAction(), index.row(), index.column(), index.parent());
+
+	//QListView::dropEvent(e);
+}
+QModelIndex PrioritySelectorListWidget::indexVisuallyAt(const QPoint & p)
 {
-	model()->setData(indexAt(event->pos()), event->mimeData()->text());
+	if (viewport()->rect().contains(p))
+	{
+		QModelIndex index = indexAt(p);
 
-	event->acceptProposedAction();
+		if (index.isValid() && visualRect(index).contains(p))
+		{
+			return index;
+		}
+	}
+
+	return QModelIndex();
 }
-*/
+//
+//void PrioritySelectorListWidget::mousePressEvent(QMouseEvent *event)
+//{
+//	if (event->button() == Qt::LeftButton)
+//	{
+//			m_DragStartPos = event->pos();
+//		QDrag *drag = new QDrag(this);
+//		QMimeData *mimeData = new QMimeData;
+//
+//		mimeData->setText((model()->data(indexAt(m_DragStartPos))).toString());
+//		drag->setMimeData(mimeData);
+//		Qt::DropAction dropAction = drag->exec();
+//	}
+//}
+//
+//void PrioritySelectorListWidget::mouseMoveEvent(QMouseEvent * event)
+//{
+//	if (!(event->buttons() & Qt::LeftButton))
+//		return;
+//	if ((event->pos() - m_DragStartPos).manhattanLength()
+//		< QApplication::startDragDistance())
+//		return;
+//
+//	QDrag *drag = new QDrag(this);
+//	QMimeData *mimeData = new QMimeData;
+//
+//	mimeData->setText((model()->data(indexAt(m_DragStartPos))).toString());
+//	drag->setMimeData(mimeData);
+//
+//	Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction);
+//}
+//
+//void PrioritySelectorListWidget::dragEnterEvent(QDragEnterEvent *event)
+//{
+//	if (event->mimeData()->hasFormat("text/plain"))
+//		event->acceptProposedAction();
+//}
+//
+//void PrioritySelectorListWidget::dropEvent(QDropEvent *event)
+//{
+//	model()->setData(indexAt(event->pos()), event->mimeData()->text());
+//
+//	event->acceptProposedAction();
+//}

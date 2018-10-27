@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PRIORIYSELECTEDWIDGET_H
+#define PRIORIYSELECTEDWIDGET_H
+
 
 #include <QListView>
 #include "PrioritySelectedListModel.h"
@@ -13,3 +15,5 @@ private:
 	PrioritySelectedListModel *m_pPrioritySelectedListModel;
 	QStringList m_pNamesLists;
 };
+
+#endif
